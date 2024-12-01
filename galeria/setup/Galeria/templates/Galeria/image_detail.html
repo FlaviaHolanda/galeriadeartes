@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type='text/css' href="{% static '../static/comment.css'%}">
+</head>
+<body>
+    <div class='container'>
+    
+    
+    <h1>{{image.title}}
+     <img src="{{ image.image.url }}" alt='image.title' style='max-width: 500px; height: auto;'>   
+    
+    <h2>Comments</h2>
+    <ul class='gallery-items'>
+        {%for comment in comments%}
+        
+
+        <li>
+            <p>Nome: {{comment.name}}</p>
+            <p>{{comment.comment}}</p>
+            <p>Em {{comment.created_at}}</p>
+        </li>
+        {% endfor %}
+
+    </ul>
+    <h2>Add Comentario</h2>
+    <form method='post'>
+        {% csrf_token %}
+        {{comment_form.as_p}}
+        <button type='submit'>Adicionar</button>
+    </form>
+</div>
+</body>
+</html>

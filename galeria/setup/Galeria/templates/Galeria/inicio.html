@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../static/inicio.css">
+</head>
+<body>
+    <header>
+        
+    </header>
+    <main>
+        <article>
+            <h2>
+                Apresentação das Artes
+            </h2>
+        </article>    
+            <div class='galeria-container'>
+                
+                <ul class='gallery-items'>
+                    <a href={% url 'image_upload' %} method='GET' > Adicionar Imagem</a>
+
+
+                        {%for object in images %}
+                            <div>
+                            {% if object.image %}
+                            <li>
+                                <a href='{% url 'image_detail' object.pk %}'>
+                                <h3> "{{object.title}}" </h3>
+                                <img src="{{object.image.url}}" alt="{{image.title}}" >
+                                
+                            </li>
+                            {% endif %}
+                            </div>
+                        {% endfor %}
+                    
+                    
+                    
+                </ul>
+                
+            </div>
+        
+    </main>
+</body>
+</html>
